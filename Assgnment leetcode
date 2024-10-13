@@ -7,3 +7,72 @@ class Solution {
                     return new int[]{i, j};
                 }
             }
+        }
+        return new int[]{}; // No solution found
+    }
+}
+
+public class Solution {
+    public static boolean isValid(String s) {
+        while (true) {
+            if (s.contains("()")) {
+                s = s.replace("()", "");
+            } else if (s.contains("{}")) {
+                s = s.replace("{}", "");
+            } else if (s.contains("[]")) {
+                s = s.replace("[]", "");
+            } else {
+                // If the string becomes empty, it indicates all brackets are matched.
+                return s.isEmpty();
+            }
+        }
+    }
+}
+
+class Solution {
+    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+
+        if(list1!=null && list2!=null){
+        if(list1.val<list2.val){
+            list1.next=mergeTwoLists(list1.next,list2);
+            return list1;
+            }
+            else{
+                list2.next=mergeTwoLists(list1,list2.next);
+                return list2;
+        }
+        }
+        if(list1==null)
+            return list2;
+        return list1;
+    }
+}
+class Solution {
+    public int maxProfit(int[] prices) {
+        int buy = prices[0];
+        int profit = 0;
+        for (int i = 1; i < prices.length; i++) {
+            if (prices[i] < buy) {
+                buy = prices[i];
+            } else if (prices[i] - buy > profit) {
+                profit = prices[i] - buy;
+            }
+        }
+        return profit;
+    }
+}
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        int j = 1;
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[i - 1]) {
+                nums[j] = nums[i];
+                j++;
+            }
+        }
+        return j;
+    }
+}
+
+
+
